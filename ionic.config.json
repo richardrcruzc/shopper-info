@@ -1,0 +1,7 @@
+{
+  "name": "shopper-info",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
