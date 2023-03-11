@@ -1,0 +1,54 @@
+img {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 25% !important;
+  border-radius: 10px;
+}
+
+ion-item {
+  border-radius: 30px !important;
+  padding-left: 30px !important;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+  border: 1px solid #ffffff;
+  border-bottom: 0px !important;
+  box-shadow: none !important;
+}
+.card-centerOld {
+  width: 90%; /* adjust width on your ion-card suitable on your screen*/
+  display: block;
+  margin: 0 auto;
+}
+.card-center {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ion-card {
+  color: #f7f7f7 !important;
+  box-shadow: none !important;
+}
+/* Set variables for all modes */
+:root {
+  /* Set the background of the entire app */
+  --ion-background-color: #f7f7f7;
+
+  /* Set the font family of the entire app */
+  --ion-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    "Roboto", sans-serif;
+}
+
+/* Set text color of the entire app for iOS only */
+.ios {
+  --ion-text-color: #000;
+}
+
+/* Set text color of the entire app for Material Design only */
+.md {
+  --ion-text-color: #222;
+}
+ion-button {
+  --background: #0d6034 !important;
+}
