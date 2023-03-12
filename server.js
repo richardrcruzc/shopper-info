@@ -43,9 +43,9 @@ require("./config/passport")(passport);
 // Routes
 
 app.use("/api/users", users);
-//app.use("/api/sms", ValidationMiddleware.validJWTNeeded, smsRouter);
+pp.use("/api/sms", ValidationMiddleware.validJWTNeeded, smsRouter);
 
-app.use("/api/sms", smsRouter);
+//app.use("/api/sms", smsRouter);
 
 app.use("/api/client", clientRoutes);
 

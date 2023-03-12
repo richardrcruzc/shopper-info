@@ -9,7 +9,8 @@ import { useHistory } from "react-router-dom";
 const instance = axios.create({
   // eslint-disable-next-line no-undef
   //baseURL: process.env.REACT_APP_API_URL
-  baseURL: "http://10.0.0.212:5000/api/",
+  //baseURL: "http://10.0.0.212:5000/api/",
+  baseURL: "http://23.254.134.220:5000/api/",
 });
 
 const AxiosInterceptor = ({ children }) => {
