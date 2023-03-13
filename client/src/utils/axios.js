@@ -2,8 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { authState } from "../state";
-
-import { useHistory } from "react-router-dom";
+import { useIonRouter } from "@ionic/react";
 
 // axios instance
 const instance = axios.create({
@@ -16,8 +15,7 @@ const instance = axios.create({
 const AxiosInterceptor = ({ children }) => {
   //console.log('interceptor', children);
   const auth = useRecoilValue(authState);
-
-  const history = useHistory();
+  const router = useIonRouter();
 
   useEffect(() => {
     instance.interceptors.request.use(
@@ -46,7 +44,7 @@ const AxiosInterceptor = ({ children }) => {
       console.log("errInterceptor", error);
       const config = error.config;
       if (error.response.status === 401 && !config._retry) {
-        history.push("/login");
+        router.push("/login", "forward", "push");
       }
 
       return Promise.reject();
@@ -58,7 +56,7 @@ const AxiosInterceptor = ({ children }) => {
     );
 
     return () => instance.interceptors.response.eject(interceptor);
-  }, [auth, history]);
+  }, [auth]);
 
   return children;
 };

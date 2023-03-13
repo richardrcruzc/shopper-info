@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 
@@ -21,22 +21,34 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 import Landing from "./pages/landing";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
+import DashBoard from "./pages/DashBoard";
+import useAuth from "./hooks/auth";
 
 setupIonicReact();
 
-const App = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/landing">
-          <Landing />
-        </Route>
-        <Route exact path="/">
-          <Landing />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+const App = () => {
+  const { isLoggedIn } = useAuth();
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route path="/landing" component={Landing} />
+          <Redirect exact from="/" to="/landing" />
+          <Route path="/Register" component={Register} />
+          <Route path="/Login" component={Login} />
+
+          <Route
+            path="/DashBoard"
+            render={() =>
+              isLoggedIn ? <DashBoard /> : <Redirect to="/landing" />
+            }
+          />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;

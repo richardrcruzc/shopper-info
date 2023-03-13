@@ -1,21 +1,20 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from '../../utils/axios';
-import { useRecoilState } from 'recoil';
-import { authState } from '../../state';
-
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "../../utils/axios";
+import { useRecoilState } from "recoil";
+import { authState } from "../../state";
+import { useIonRouter } from "@ionic/react";
 
 const Initialstate = {
-  name: '',
-  email: '',
-  password: '',
-  password2: '',
-  errors: {}
+  name: "",
+  email: "",
+  password: "",
+  password2: "",
+  errors: {},
 };
 
 function Register() {
-  const navigate = useNavigate();
+  const router = useIonRouter();
   const [auth] = useRecoilState(authState);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -28,18 +27,18 @@ function Register() {
       name: registerModel.name,
       email: registerModel.email,
       password: registerModel.password,
-      password2: registerModel.password2
+      password2: registerModel.password2,
     };
     await axios
-      .post('/api/users/register', newUser)
+      .post("/api/users/register", newUser)
       .then(() => {
         setIsLoading(false);
-        if (auth) navigate('/landing');
+        if (auth) router.push("/landing", "forward", "push");
       })
       .catch((err) => {
         setErrors(err.response.data);
-        console.log('err.response.data', err.response.data);
-        console.log('errors', errors);
+        console.log("err.response.data", err.response.data);
+        console.log("errors", errors);
         setIsLoading(false);
       });
   };
@@ -56,9 +55,10 @@ function Register() {
       <div className="row">
         <div className="col s8 offset-s2">
           <Link to="/" className="btn-flat waves-effect">
-            <i className="material-icons left">keyboard_backspace</i> Back to home
+            <i className="material-icons left">keyboard_backspace</i> Back to
+            home
           </Link>
-          <div className="col s12" style={{ paddingLeft: '11.250px' }}>
+          <div className="col s12" style={{ paddingLeft: "11.250px" }}>
             <h4>
               <b>Register</b> below
             </h4>
@@ -77,7 +77,7 @@ function Register() {
                 type="text"
               />
               <label htmlFor="name">Name</label>
-              <span style={{ color: 'red' }}>{errors.name}</span>
+              <span style={{ color: "red" }}>{errors.name}</span>
             </div>
             <div className="input-field col s12">
               <input
@@ -89,7 +89,7 @@ function Register() {
                 type="email"
               />
               <label htmlFor="email">Email</label>
-              <span style={{ color: 'red' }}>{errors.email}</span>
+              <span style={{ color: "red" }}>{errors.email}</span>
             </div>
             <div className="input-field col s12">
               <input
@@ -101,7 +101,7 @@ function Register() {
                 type="password"
               />
               <label htmlFor="password">Password</label>
-              <span style={{ color: 'red' }}>{errors.password}</span>
+              <span style={{ color: "red" }}>{errors.password}</span>
             </div>
             <div className="input-field col s12">
               <input
@@ -113,20 +113,23 @@ function Register() {
                 type="password"
               />
               <label htmlFor="password2">Confirm Password</label>
-              <span style={{ color: 'red' }}>{errors.password2}</span>
+              <span style={{ color: "red" }}>{errors.password2}</span>
             </div>
-            <div className="col s12" style={{ paddingLeft: '11.250px' }}>
+            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <button
                 disabled={isLoading}
                 style={{
-                  width: '150px',
-                  borderRadius: '3px',
-                  letterSpacing: '1.5px',
-                  marginTop: '1rem'
+                  width: "150px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                  marginTop: "1rem",
                 }}
                 type="submit"
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3">
-                {isLoading && <span className="spinner-border spinner-border-sm mr-1"></span>}
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+              >
+                {isLoading && (
+                  <span className="spinner-border spinner-border-sm mr-1"></span>
+                )}
                 Sign up
               </button>
             </div>

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import {
   IonAlert,
+  IonBackButton,
   IonButton,
+  IonButtons,
   IonCard,
   IonCardContent,
   IonCardHeader,
@@ -12,10 +14,12 @@ import {
   IonLabel,
   IonList,
   IonNote,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
-
 import "./landing.css";
 import Register from "../service/registerClient";
+import { useIonRouter } from "@ionic/react";
 
 const initialState = {
   phone: "",
@@ -38,16 +42,16 @@ function Landing() {
   const [message, setMessage] = useState("Thank you!");
 
   const handleSubmit = async () => {
-    console.log("client", client);
     await Register(client)
       .then((res) => {
         setClient(initialState);
         setShowAlert(true);
       })
       .catch((err) => {
+        console.log(" + err", err);
         setHeader("An Error Has Occured !");
         setSubHeader("Please Check Your Information !");
-        setMessage("All Fields Are Required ! " + err);
+        setMessage("All Fields Are Required ! ");
         setShowAlert(true);
       });
   };
@@ -74,9 +78,23 @@ function Landing() {
   const markTouched = () => {
     setIsTouched(true);
   };
+  //	Initializing our router
+  const router = useIonRouter();
+  //	A simple, hard-coded navigation
+  const simpleNavigate = () => {
+    router.push("/login", "forward", "push");
+  };
   return (
     <IonCard>
       <IonCardHeader>
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonBackButton />
+          </IonButtons>
+          <IonTitle>
+            <IonButton onClick={simpleNavigate}>LogIn</IonButton>
+          </IonTitle>
+        </IonToolbar>
         <img src="/assets/logoideal.jpeg" alt="Ideal Food Market"></img>
         <IonCardTitle class="ion-text-center">Join Our Weekly Ad.</IonCardTitle>
         <IonCardSubtitle class="ion-text-center">
