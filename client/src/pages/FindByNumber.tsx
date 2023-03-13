@@ -66,7 +66,6 @@ export const FindByNumber: React.FC = () => {
         <IonCard>
           <IonCardHeader>
             <IonCardTitle>{smsPhone?.phone}</IonCardTitle>
-            <IonCardSubtitle>{smsPhone?.fName}</IonCardSubtitle>
           </IonCardHeader>
 
           <IonCardContent>
