@@ -72,7 +72,7 @@ exports.findOneChangeStatus = async (req, res) => {
   console.log("update", update);
 
   await Sms.findOneAndUpdate(filter, update, {
-    new: true,
+    returnOriginal: false,
   })
     .then((data) => {
       if (!data)
