@@ -71,8 +71,10 @@ exports.findOneChangeStatus = async (req, res) => {
   console.log("filter", filter);
   console.log("update", update);
 
-  await Sms.updateOne(filter, update);
-
+  const doc = await Sms.find(filter);
+  doc.status = status;
+  doc.save;
+  /*
   await Sms.findOneAndUpdate(filter, update, {
     returnOriginal: false,
   })
@@ -86,6 +88,7 @@ exports.findOneChangeStatus = async (req, res) => {
         .status(500)
         .send({ message: "Error retrieving Sms with phone=" + phone });
     });
+    */
 };
 
 exports.SendSmsTest = (req, res) => {
