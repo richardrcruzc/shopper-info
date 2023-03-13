@@ -73,7 +73,7 @@ exports.findOneChangeStatus = async (req, res) => {
 
   const doc = await Sms.find(filter);
   doc.status = status;
-  doc.save;
+  await doc.save;
   /*
   await Sms.findOneAndUpdate(filter, update, {
     returnOriginal: false,
