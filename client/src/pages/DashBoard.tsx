@@ -39,6 +39,10 @@ const DashBoard = () => {
               <IonIcon slot="start" icon={personCircle}></IonIcon>
               Send Sms
             </IonButton>
+            <IonButton fill="solid">
+              Help
+              <IonIcon slot="end" icon={helpCircle}></IonIcon>
+            </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonContent>
