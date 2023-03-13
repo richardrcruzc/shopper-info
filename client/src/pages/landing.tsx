@@ -18,7 +18,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import "./landing.css";
-import Register from "../service/registerClient";
+import AxiosActions from "../service/AxiosCalls";
 import { useIonRouter } from "@ionic/react";
 
 const initialState = {
@@ -26,7 +26,7 @@ const initialState = {
   email: "",
   fName: "",
   lName: "",
-  zipCode: "",
+  ZipCode: "",
 };
 
 function Landing() {
@@ -42,7 +42,7 @@ function Landing() {
   const [message, setMessage] = useState("Thank you!");
 
   const handleSubmit = async () => {
-    await Register(client)
+    await AxiosActions.Register(client)
       .then((res) => {
         setClient(initialState);
         setShowAlert(true);
@@ -180,7 +180,7 @@ function Landing() {
               type="number"
               name="zipCode"
               placeholder="Zipcode"
-              value={client.zipCode}
+              value={client.ZipCode}
               onIonInput={(e) => handleInputChange(e)}
             ></IonInput>
           </IonItem>

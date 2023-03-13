@@ -25,6 +25,8 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import DashBoard from "./pages/DashBoard";
 import useAuth from "./hooks/auth";
+import { ListAllPage } from "./pages/ListAllPage";
+import { FindByNumber } from "./pages/FindByNumber";
 
 setupIonicReact();
 
@@ -34,16 +36,31 @@ const App = () => {
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          <Route path="/landing" component={Landing} />
+          <Route path="/landing" component={Landing} exact={true} />
           <Redirect exact from="/" to="/landing" />
           <Route path="/Register" component={Register} />
-          <Route path="/Login" component={Login} />
+          <Route path="/Login" component={Login} exact={true} />
 
           <Route
             path="/DashBoard"
             render={() =>
               isLoggedIn ? <DashBoard /> : <Redirect to="/landing" />
             }
+            exact={true}
+          />
+          <Route
+            path="/ListAllPage"
+            render={() =>
+              isLoggedIn ? <ListAllPage /> : <Redirect to="/landing" />
+            }
+            exact={true}
+          />
+          <Route
+            path="/FindByNumber"
+            render={() =>
+              isLoggedIn ? <FindByNumber /> : <Redirect to="/landing" />
+            }
+            exact={true}
           />
         </IonRouterOutlet>
       </IonReactRouter>

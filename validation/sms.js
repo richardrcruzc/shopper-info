@@ -13,7 +13,7 @@ module.exports = function validateSmsInput(data) {
   data.email = !isEmpty(data.email) ? data.email : "";
   data.fName = !isEmpty(data.fName) ? data.fName : "";
   data.lName = !isEmpty(data.lName) ? data.lName : "";
-  data.ZipCode = !isEmpty(data.lName) ? data.lName : "";
+  data.ZipCode = !isEmpty(data.ZipCode) ? data.ZipCode : "";
 
   if (Validator.isEmpty(data.phone)) {
     errors.phone = "phone field is required";

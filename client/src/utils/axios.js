@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { useRecoilValue } from "recoil";
-import { authState } from "../state";
 import { useIonRouter } from "@ionic/react";
+
+import useAuth from "../hooks/auth";
 
 // axios instance
 const instance = axios.create({
@@ -13,21 +13,17 @@ const instance = axios.create({
 });
 
 const AxiosInterceptor = ({ children }) => {
-  //console.log('interceptor', children);
-  const auth = useRecoilValue(authState);
+  //const auth = useRecoilValue(authState);
+  const { auth } = useAuth();
   const router = useIonRouter();
 
   useEffect(() => {
     instance.interceptors.request.use(
       async (config) => {
         const token = auth;
-        config.headers = {
-          "Content-Type": "application/json",
-        };
         if (token) {
           config.headers = {
-            "Content-Type": "application/json",
-            authorization: `Authorization ${token}`,
+            authorization: token,
           };
         }
         return config;
@@ -56,7 +52,7 @@ const AxiosInterceptor = ({ children }) => {
     );
 
     return () => instance.interceptors.response.eject(interceptor);
-  }, [auth]);
+  });
 
   return children;
 };

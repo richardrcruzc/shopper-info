@@ -1,18 +1,21 @@
 import {
   IonButton,
-  IonButtons,
   IonContent,
   IonHeader,
-  IonIcon,
   IonPage,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { helpCircle, personCircle } from "ionicons/icons";
+import { useHistory } from "react-router";
 
 import "./DashBoard.css";
 
 const DashBoard = () => {
+  const { replace } = useHistory();
+
+  const handleClick = async (link: any) => {
+    replace(link);
+  };
   return (
     <IonPage>
       <IonHeader>
@@ -21,30 +24,34 @@ const DashBoard = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonButton fill="solid" routerLink="/about">
-              <IonIcon slot="start" icon={personCircle}></IonIcon>
-              List all Clients
-            </IonButton>
-            <IonButton fill="solid" routerLink="/about">
-              <IonIcon slot="start" icon={personCircle}></IonIcon>
-              find One
-            </IonButton>
-            <IonButton fill="solid" routerLink="/about">
-              <IonIcon slot="start" icon={personCircle}></IonIcon>
-              Send Sms Test
-            </IonButton>
-            <IonButton fill="solid" routerLink="/about">
-              <IonIcon slot="start" icon={personCircle}></IonIcon>
-              Send Sms
-            </IonButton>
-            <IonButton fill="solid">
-              Help
-              <IonIcon slot="end" icon={helpCircle}></IonIcon>
-            </IonButton>
-          </IonButtons>
+        <IonToolbar className="center">
+          <IonTitle size="large">Available Options</IonTitle>
         </IonToolbar>
+        <IonButton expand="block" onClick={() => handleClick("ListAllPage")}>
+          {" "}
+          List all Clients
+        </IonButton>{" "}
+        <IonButton expand="block" onClick={() => handleClick("FindByNumber")}>
+          {" "}
+          Find By Phone Number
+        </IonButton>{" "}
+        <IonButton expand="block" onClick={() => handleClick("TestSms")}>
+          {" "}
+          Send Sms Test
+        </IonButton>
+        <IonButton expand="block" onClick={() => handleClick("SendSms")}>
+          {" "}
+          Send Sms
+        </IonButton>
+        <IonButton expand="full" routerLink="/login">
+          Log Out
+        </IonButton>
+        <IonButton expand="full" onClick={() => handleClick("AboutUs")}>
+          About Us
+        </IonButton>
+        <IonButton expand="full" onClick={() => handleClick("Help")}>
+          Help
+        </IonButton>
       </IonContent>
     </IonPage>
   );

@@ -4,14 +4,18 @@ import { useEffect, useState } from "react";
 
 const useAuth = () => {
   const [isLoggedIn, setLoggedIn] = useState<boolean>(false);
-  const [auth] = useRecoilState(authState);
+  const [auth, setAuth] = useRecoilState(authState);
 
   useEffect(() => {
-    if (auth !== undefined) {
+    const token = localStorage.getItem("jwtToken");
+    if (token !== undefined && token !== null && token !== "") {
+      setAuth(token);
+    }
+    if (auth !== undefined && auth !== "") {
       setLoggedIn(true);
     }
-  }, [auth]);
-  return { isLoggedIn };
+  }, [auth, setAuth]);
+  return { isLoggedIn, auth };
 };
 
 export default useAuth;
