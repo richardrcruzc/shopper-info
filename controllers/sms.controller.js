@@ -74,7 +74,7 @@ exports.findOneChangeStatus = async (req, res) => {
   let doc = await Sms.findOneAndUpdate(filter, update, {
     new: true,
   });
-  console.log("NEw status= ", doc.Status);
+  console.log("NEw status= ", doc);
 };
 
 exports.SendSmsTest = (req, res) => {
