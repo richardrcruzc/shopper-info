@@ -71,17 +71,10 @@ exports.findOneChangeStatus = async (req, res) => {
   console.log("filter", filter);
   console.log("update", update);
 
-  await Sms.findOneAndUpdate(filter, update)
-    .then((data) => {
-      if (!data)
-        res.status(404).send({ message: "Not found Sms with phone= " + phone });
-      else res.send(data);
-    })
-    .catch((err) => {
-      res
-        .status(500)
-        .send({ message: "Error retrieving Sms with phone=" + phone });
-    });
+  let doc = await Sms.findOneAndUpdate(filter, update, {
+    new: true,
+  });
+  console.log("NEw status= ", doc.Status);
 };
 
 exports.SendSmsTest = (req, res) => {
