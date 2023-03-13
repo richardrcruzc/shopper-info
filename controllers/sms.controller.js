@@ -64,8 +64,8 @@ exports.findOne = (req, res) => {
 exports.findOneChangeStatus = async (req, res) => {
   const phone = req.params.phone;
   const status = req.params.status;
-  const filter = { Phone: phone };
-  const update = { Status: status };
+  const filter = { phone: phone };
+  const update = { status: status };
   console.log("phone", phone);
   console.log("status", status);
   console.log("filter", filter);
