@@ -71,6 +71,8 @@ exports.findOneChangeStatus = async (req, res) => {
   console.log("filter", filter);
   console.log("update", update);
 
+  await Sms.updateOne(filter, update);
+
   await Sms.findOneAndUpdate(filter, update, {
     returnOriginal: false,
   })
