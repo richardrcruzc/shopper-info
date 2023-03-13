@@ -61,14 +61,18 @@ exports.findOne = (req, res) => {
       res.status(500).send({ message: "Error retrieving Sms with id=" + id });
     });
 };
-exports.findOneChangeStatus = (req, res) => {
+exports.findOneChangeStatus = async (req, res) => {
   const phone = req.params.phone;
   const status = req.params.status;
   const filter = { Phone: phone };
   const update = { Status: status };
 
   console.log("phone", phone);
-  Sms.findOneAndUpdate(filter, update)
+  console.log("status", status);
+  console.log("filter", filter);
+  console.log("update", update);
+
+  await Sms.findOneAndUpdate(filter, update)
     .then((data) => {
       if (!data)
         res.status(404).send({ message: "Not found Sms with id " + id });
