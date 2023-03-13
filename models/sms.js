@@ -7,7 +7,7 @@ const SmsSchema = new Schema({
   fName: String,
   lName: String,
   ZipCode: String,
-  Status: String, //"Pending" | "Submitted",
+  Status: String, //"Pending" | "Submitted" | "Canceled",
   results: String,
 });
 

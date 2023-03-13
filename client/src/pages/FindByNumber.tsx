@@ -24,6 +24,7 @@ export type initialState = {
   fName: string;
   lName: string;
   ZipCode: string;
+  Status: string;
 };
 export const FindByNumber: React.FC = () => {
   const [loadingText, setLoadingText] = useState<string | undefined>();
@@ -67,13 +68,13 @@ export const FindByNumber: React.FC = () => {
           <IonCardHeader>
             <IonCardTitle>{smsPhone?.phone}</IonCardTitle>
           </IonCardHeader>
-
           <IonCardContent>
             <IonCardSubtitle>
-              {smsPhone?.fName} {smsPhone?.fName}
+              Name: {smsPhone?.fName} {smsPhone?.fName}
             </IonCardSubtitle>
-            <IonCardSubtitle>{smsPhone?.email}</IonCardSubtitle>
-            <IonCardSubtitle>{smsPhone?.ZipCode}</IonCardSubtitle>
+            <IonCardSubtitle>Email: {smsPhone?.email}</IonCardSubtitle>
+            <IonCardSubtitle>ZipCode: {smsPhone?.ZipCode}</IonCardSubtitle>
+            <IonCardSubtitle>Status: {smsPhone?.Status}</IonCardSubtitle>
           </IonCardContent>
         </IonCard>
       </IonContent>
