@@ -61,6 +61,23 @@ exports.findOne = (req, res) => {
       res.status(500).send({ message: "Error retrieving Sms with id=" + id });
     });
 };
+exports.findOneChangeStatus = (req, res) => {
+  const phone = req.params.phone;
+  const status = req.params.status;
+  const filter = { Phone: phone };
+  const update = { Status: status };
+
+  console.log("phone", phone);
+  Sms.findOneAndUpdate(filter, update)
+    .then((data) => {
+      if (!data)
+        res.status(404).send({ message: "Not found Sms with id " + id });
+      else res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({ message: "Error retrieving Sms with id=" + id });
+    });
+};
 
 exports.SendSmsTest = (req, res) => {
   const phone = req.body.phone;

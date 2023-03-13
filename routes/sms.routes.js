@@ -4,6 +4,8 @@ const express = require("express");
 const smsRouter = express.Router();
 
 //smsRouter.post("/", sms.CreateClient);
+smsRouter.post("/ChangeStatus", sms.findOneChangeStatus);
+
 smsRouter.get("/all", sms.findAll);
 smsRouter.post("/SendSmsTest", sms.SendSmsTest);
 
