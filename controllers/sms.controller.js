@@ -73,11 +73,11 @@ exports.findOneChangeStatus = async (req, res) => {
 
   var smsMap = {};
   await Sms.find(filter)
-    .then(async (data) => {
+    .then((data) => {
       if (data) {
         const update = data[0];
         console.log("update._id", update._id);
-        await Sms.findByIdAndUpdate(update._id, update)
+        Sms.findByIdAndUpdate(update._id, update)
           .then((data) => {})
           .catch((err) => {});
         res.send(data[0]);
