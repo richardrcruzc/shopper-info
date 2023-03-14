@@ -61,7 +61,7 @@ exports.findOne = (req, res) => {
       res.status(500).send({ message: "Error retrieving Sms with id=" + id });
     });
 };
-exports.findOneChangeStatus = (req, res) => {
+exports.findOneChangeStatus = async (req, res) => {
   const phone = req.params.phone;
   const status = req.params.status;
   const filter = { phone: phone };
@@ -70,6 +70,27 @@ exports.findOneChangeStatus = (req, res) => {
   console.log("status", status);
   console.log("filter", filter);
   console.log("update", update);
+
+  var smsMap = {};
+  await Sms.find(filter)
+    .then((data) => {
+      if (data) {
+        Sms.findByIdAndUpdate(data._id, update)
+          .then((data1) => {
+            res.send(data1);
+          })
+          .catch((err1) => {
+            res
+              .status(500)
+              .send({ message: "Error retrieving Sms with phone=" + err1 });
+          });
+      } else {
+        res.send("Error?");
+      }
+    })
+    .catch((err) => {
+      console.log("error:", err);
+    });
 
   let doc = Sms.find({ phone: phone });
 
