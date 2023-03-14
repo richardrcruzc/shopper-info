@@ -148,11 +148,12 @@ exports.SendSms = async (req, res) => {
   }
 
   smsMap[0].forEach((sms) => {
+    const newMessage = message.replace("{name}", sms.fName);
     const payload = {
       apikey: apikey,
       source: source,
       destination: sms.phone,
-      messageText: message,
+      messageText: newMessage,
     };
 
     (async () => {
