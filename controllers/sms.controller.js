@@ -73,9 +73,9 @@ exports.findOneChangeStatus = (req, res) => {
 
   let doc = Sms.find({ phone: phone });
 
-  console.log("doc[0].status", doc[0].status);
+  console.log("doc[0].status", doc.status);
 
-  console.log("doc.status", doc.status);
+  //console.log("doc.status", doc.status);
 
   res.send(doc.status);
   //Sms.updateOne(filter, update, {
