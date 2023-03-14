@@ -75,30 +75,15 @@ exports.findOneChangeStatus = async (req, res) => {
   await Sms.find(filter)
     .then((data) => {
       if (data) {
-        Sms.findByIdAndUpdate(data._id, update)
-          .then((data1) => {
-            res.send(data1);
-          })
-          .catch((err1) => {
-            res
-              .status(500)
-              .send({ message: "Error retrieving Sms with phone=" + err1 });
-          });
+        res.send(data);
       } else {
-        res.send("Error?");
+        res.send("Error? data: " + data);
       }
     })
     .catch((err) => {
       console.log("error:", err);
     });
 
-  let doc = Sms.find({ phone: phone });
-
-  console.log("doc[0].status", doc.status);
-
-  //console.log("doc.status", doc.status);
-
-  res.send(doc.status);
   //Sms.updateOne(filter, update, {
   //  upsert: false,
   //  returnDocument: "after",
