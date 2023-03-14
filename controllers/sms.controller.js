@@ -79,8 +79,12 @@ exports.findOneChangeStatus = async (req, res) => {
         const id = update._id;
         console.log("update._id", id);
         Sms.findByIdAndUpdate(id, update)
-          .then((data) => {})
-          .catch((err) => {});
+          .then((results) => {
+            console.log("results", results);
+          })
+          .catch((errors) => {
+            console.log("errors", errors);
+          });
         res.send(update);
       } else {
         res.send("Error? data: " + data);
