@@ -71,9 +71,12 @@ exports.findOneChangeStatus = async (req, res) => {
   console.log("filter", filter);
   console.log("update", update);
 
-  const doc = await Sms.find(filter);
-  doc.status = status;
-  await doc.save;
+  const doc = await Sms.updateOne(filter, update, {
+    upsert: false,
+    returnDocument: "after",
+  });
+  //doc.status = status;
+  //await doc.save;
   /*
   await Sms.findOneAndUpdate(filter, update, {
     returnOriginal: false,
