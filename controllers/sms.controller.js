@@ -76,7 +76,7 @@ exports.findOneChangeStatus = async (req, res) => {
     .then((data) => {
       if (data) {
         const update = data[0];
-        const id = update._id;
+        const id = update._id.toHexString();
         console.log("update._id", id);
         Sms.findByIdAndUpdate(id, update)
           .then((results) => {
