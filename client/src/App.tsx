@@ -29,6 +29,7 @@ import { ListAllPage } from "./pages/ListAllPage";
 import { FindByNumber } from "./pages/FindByNumber";
 import { TestSms } from "./pages/TestSms";
 import { SendSms } from "./pages/SendSms";
+import { ClearSms } from "./pages/ClearSms";
 
 setupIonicReact();
 
@@ -75,6 +76,13 @@ const App = () => {
             path="/SendSms"
             render={() =>
               isLoggedIn ? <SendSms /> : <Redirect to="/landing" />
+            }
+            exact={true}
+          />
+          <Route
+            path="/ClearSms"
+            render={() =>
+              isLoggedIn ? <ClearSms /> : <Redirect to="/landing" />
             }
             exact={true}
           />

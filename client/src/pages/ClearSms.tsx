@@ -16,30 +16,20 @@ import {
 import { useState } from "react";
 import AxiosActions from "../service/AxiosCalls";
 
-export const SendSms: React.FC = () => {
+export const ClearSms: React.FC = () => {
   const [loadingText, setLoadingText] = useState<string | undefined>();
-  const [smsMessage, setSmsMessage] = useState();
   const [showAlert, setShowAlert] = useState(false);
-  const [header, setHeader] = useState("Alert");
-  const [subHeader, setSubHeader] = useState(
-    "Your Information have been saved !"
-  );
+  const [header, setHeader] = useState("Info");
+  const [subHeader, setSubHeader] = useState("Your Data Have Been Cleared !");
   const [message, setMessage] = useState("Thank you!");
   const handleSubmit = async () => {
-    if (smsMessage === undefined || smsMessage === "") {
-      setHeader("Alert!");
-      setSubHeader("You Must Enter Some Message In The Message Box !");
-      setMessage("Thanks ! ");
-      setShowAlert(true);
-      return;
-    }
-    setLoadingText("SendSms...");
-    await AxiosActions.SendSms({ message: smsMessage })
+    setLoadingText("Clean...");
+    await AxiosActions.ClearSms()
       .then((res) => {
         setLoadingText(undefined);
         setHeader("Info!");
-        setSubHeader("All SMS has Been Sent !");
-        setMessage("Sent ! ");
+        setSubHeader("All SMS has Been Cleared !");
+        setMessage("Clean ! ");
         setShowAlert(true);
       })
       .catch((err) => {
@@ -47,7 +37,7 @@ export const SendSms: React.FC = () => {
         console.log(" + err", err);
         setHeader("An Error Has Occured !");
         setSubHeader("Please Check Your Information !");
-        setMessage("All Fields Are Required ! ");
+        setMessage("Data No Clean ! ");
         setShowAlert(true);
       });
   };
@@ -67,29 +57,17 @@ export const SendSms: React.FC = () => {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/dashboard" />
           </IonButtons>
-          <IonTitle size="large">Send SMS</IonTitle>
+          <IonTitle size="large">Clear SMS</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonItem>
           <IonTitle size="large">
-            Enter The Message To Be Send To all the Customer That Have Been
-            Register In Then App.
+            This Option Will Clear the Past SMS Send Proces, In Order To Allow
+            You To Send New Batch Again.
           </IonTitle>
         </IonItem>
-        <IonItem fill="outline">
-          <IonLabel position="floating">
-            {" "}
-            <h1>Message To Be Send </h1>
-          </IonLabel>
-          <IonTextarea
-            autoGrow={true}
-            name="smsMessage"
-            placeholder="Type something here"
-            value={smsMessage}
-            onIonInput={(e: any) => setSmsMessage(e.target.value)}
-          ></IonTextarea>
-        </IonItem>
+
         <IonItem>
           <IonButton
             shape="round"
@@ -97,7 +75,7 @@ export const SendSms: React.FC = () => {
             size="large"
             onClick={() => handleSubmit()}
           >
-            Send
+            Clear
           </IonButton>
         </IonItem>
       </IonContent>

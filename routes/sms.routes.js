@@ -11,5 +11,6 @@ smsRouter.post("/SendSmsTest", sms.SendSmsTest);
 
 smsRouter.get("/phone/:phone", sms.findOne);
 smsRouter.post("/SendSms", sms.SendSms);
+smsRouter.post("/ClearSms", sms.ClearSms);
 
 module.exports = smsRouter;

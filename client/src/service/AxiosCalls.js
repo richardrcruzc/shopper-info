@@ -27,6 +27,10 @@ async function SendSms(payload) {
   const client = await axios.post("/sms/SendSms", payload);
   return client.data;
 }
+async function ClearSms() {
+  const client = await axios.post("/sms/ClearSms");
+  return client.data;
+}
 const AxiosActions = {
   Register,
   ListAll,
@@ -34,6 +38,7 @@ const AxiosActions = {
   ChangeStatus,
   SendSmsTest,
   SendSms,
+  ClearSms,
 };
 
 export default AxiosActions;

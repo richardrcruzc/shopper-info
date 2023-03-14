@@ -43,6 +43,10 @@ const DashBoard = () => {
           {" "}
           Send Sms
         </IonButton>
+        <IonButton expand="block" onClick={() => handleClick("ClearSms")}>
+          {" "}
+          Clear SMS
+        </IonButton>
         <IonButton expand="full" routerLink="/login">
           Log Out
         </IonButton>

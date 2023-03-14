@@ -3,6 +3,19 @@ const Sms = require("../models/sms");
 
 const validateSmsInput = require("../validation/sms");
 
+exports.ClearSms = async (req, res) => {
+  await Sms.updateMany({ Status: "Submitted" }, { Status: "Pending" })
+    .then((data) => {
+      res.send("Data Clear");
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the ClearSms.",
+      });
+    });
+};
+
 exports.CreateClient = (req, res) => {
   const { errors, isValid } = validateSmsInput(req.body);
   // Check validation
