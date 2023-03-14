@@ -14,9 +14,12 @@ import {
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
+  IonButton,
 } from "@ionic/react";
 import { trashBin } from "ionicons/icons";
 import AxiosActions from "../service/AxiosCalls";
+
+import "./FindByNumber.css";
 export type initialState = {
   _id: string;
   phone: string;
@@ -37,14 +40,25 @@ export const FindByNumber: React.FC = () => {
       .then((res) => {
         setSmsPhone(res[0]);
         setLoadingText(undefined);
-        console.log("smsPhone 1", smsPhone);
       })
       .catch((err: any) => {
         console.log(" + err", err);
         setLoadingText(undefined);
       });
   };
-
+  const handleChangeStatust = async () => {
+    setLoadingText("ChangeStatus...");
+    const newStatus = smsPhone?.Status === "Canceled" ? "Pending" : "Canceled";
+    await AxiosActions.ChangeStatus(smsPhone?.phone, newStatus)
+      .then(async (res) => {
+        setLoadingText(undefined);
+        await SearchQuery(smsPhone?.phone);
+      })
+      .catch((err: any) => {
+        console.log(" + err", err);
+        setLoadingText(undefined);
+      });
+  };
   return (
     <IonPage>
       <IonHeader>
@@ -64,19 +78,28 @@ export const FindByNumber: React.FC = () => {
           placeholder="Search phone number"
           onIonChange={(e) => SearchQuery(e.detail.value!)}
         />
-        <IonCard>
-          <IonCardHeader>
-            <IonCardTitle>{smsPhone?.phone}</IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <IonCardSubtitle>
-              Name: {smsPhone?.fName} {smsPhone?.fName}
-            </IonCardSubtitle>
-            <IonCardSubtitle>Email: {smsPhone?.email}</IonCardSubtitle>
-            <IonCardSubtitle>ZipCode: {smsPhone?.ZipCode}</IonCardSubtitle>
-            <IonCardSubtitle>Status: {smsPhone?.Status}</IonCardSubtitle>
-          </IonCardContent>
-        </IonCard>
+        {smsPhone && (
+          <IonCard>
+            <IonCardHeader>
+              <IonCardTitle>{smsPhone?.phone}</IonCardTitle>
+            </IonCardHeader>
+            <IonCardContent>
+              <IonCardSubtitle>
+                Name: {smsPhone?.fName} {smsPhone?.fName}
+              </IonCardSubtitle>
+              <IonCardSubtitle>Email: {smsPhone?.email}</IonCardSubtitle>
+              <IonCardSubtitle>ZipCode: {smsPhone?.ZipCode}</IonCardSubtitle>
+              <IonCardSubtitle>Status: {smsPhone?.Status}</IonCardSubtitle>
+            </IonCardContent>
+            <IonButton
+              shape="round"
+              expand="block"
+              onClick={() => handleChangeStatust()}
+            >
+              {smsPhone?.Status === "Canceled" ? "Activate?" : "Cancel?"}
+            </IonButton>
+          </IonCard>
+        )}
       </IonContent>
     </IonPage>
   );

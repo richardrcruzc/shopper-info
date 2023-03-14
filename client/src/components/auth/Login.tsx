@@ -87,50 +87,49 @@ const Login = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonGrid>
-          <IonRow>
-            <IonAlert
-              isOpen={iserror}
-              onDidDismiss={() => setIserror(false)}
-              header={"Error!"}
-              message={message}
-              buttons={["Dismiss"]}
-            />
-          </IonRow>
-          <IonRow>
-            <IonIcon
-              style={{ fontSize: "70px", color: "#0040ff" }}
-              icon={personCircle}
-            />
-          </IonRow>
+        <IonItem>
+          <IonAlert
+            isOpen={iserror}
+            onDidDismiss={() => setIserror(false)}
+            header={"Error!"}
+            message={message}
+            buttons={["Dismiss"]}
+          />
+        </IonItem>
+        <IonItem>
+          <IonIcon
+            style={{ fontSize: "70px", color: "#0040ff" }}
+            icon={personCircle}
+          />
+        </IonItem>
 
-          <IonRow>
-            <IonItem>
-              <IonLabel position="floating"> Email</IonLabel>
-              <IonInput
-                type="email"
-                value={email}
-                onIonChange={(e) => setEmail(e.detail.value!)}
-              ></IonInput>
-            </IonItem>
-          </IonRow>
+        <IonItem>
+          <IonLabel position="floating"> Email</IonLabel>
+          <IonInput
+            type="email"
+            value={email}
+            onIonChange={(e) => setEmail(e.detail.value!)}
+          ></IonInput>
+        </IonItem>
 
-          <IonRow>
-            <IonItem>
-              <IonLabel position="floating"> Password</IonLabel>
-              <IonInput
-                type="password"
-                value={password}
-                onIonChange={(e) => setPassword(e.detail.value!)}
-              ></IonInput>
-            </IonItem>
-          </IonRow>
-          <IonRow>
-            <IonButton expand="block" onClick={handleLogin}>
-              Login
-            </IonButton>
-          </IonRow>
-        </IonGrid>
+        <IonItem>
+          <IonLabel position="floating"> Password</IonLabel>
+          <IonInput
+            type="password"
+            value={password}
+            onIonChange={(e) => setPassword(e.detail.value!)}
+          ></IonInput>
+        </IonItem>
+
+        <IonButton
+          className="ion-margin-top"
+          shape="round"
+          expand="block"
+          size="large"
+          onClick={handleLogin}
+        >
+          Login
+        </IonButton>
       </IonContent>
     </IonPage>
   );

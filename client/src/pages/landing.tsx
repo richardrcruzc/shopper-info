@@ -20,7 +20,7 @@ import {
 import "./landing.css";
 import AxiosActions from "../service/AxiosCalls";
 import { useIonRouter } from "@ionic/react";
-
+import logo from "../Images/LogoIdeal.jpeg";
 const initialState = {
   phone: "",
   email: "",
@@ -95,7 +95,7 @@ function Landing() {
             <IonButton onClick={simpleNavigate}>LogIn</IonButton>
           </IonTitle>
         </IonToolbar>
-        <img src="/assets/logoideal.jpeg" alt="Ideal Food Market"></img>
+        <img src={logo} alt="Ideal Food Market"></img>
         <IonCardTitle class="ion-text-center">Join Our Weekly Ad.</IonCardTitle>
         <IonCardSubtitle class="ion-text-center">
           Shop and save with our weekly deals.

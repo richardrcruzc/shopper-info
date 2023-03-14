@@ -27,6 +27,8 @@ import DashBoard from "./pages/DashBoard";
 import useAuth from "./hooks/auth";
 import { ListAllPage } from "./pages/ListAllPage";
 import { FindByNumber } from "./pages/FindByNumber";
+import { TestSms } from "./pages/TestSms";
+import { SendSms } from "./pages/SendSms";
 
 setupIonicReact();
 
@@ -59,6 +61,20 @@ const App = () => {
             path="/FindByNumber"
             render={() =>
               isLoggedIn ? <FindByNumber /> : <Redirect to="/landing" />
+            }
+            exact={true}
+          />
+          <Route
+            path="/testsms"
+            render={() =>
+              isLoggedIn ? <TestSms /> : <Redirect to="/landing" />
+            }
+            exact={true}
+          />
+          <Route
+            path="/SendSms"
+            render={() =>
+              isLoggedIn ? <SendSms /> : <Redirect to="/landing" />
             }
             exact={true}
           />

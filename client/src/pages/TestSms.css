@@ -30,6 +30,25 @@ ion-item {
   color: #f7f7f7 !important;
   box-shadow: none !important;
 }
+/* Set variables for all modes */
+:root {
+  /* Set the background of the entire app */
+  --ion-background-color: #f7f7f7;
+
+  /* Set the font family of the entire app */
+  --ion-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    "Roboto", sans-serif;
+}
+
+/* Set text color of the entire app for iOS only */
+.ios {
+  --ion-text-color: #000;
+}
+
+/* Set text color of the entire app for Material Design only */
+.md {
+  --ion-text-color: #222;
+}
 ion-button {
   --background: #0d6034 !important;
 }
