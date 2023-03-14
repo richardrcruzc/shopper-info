@@ -71,14 +71,14 @@ exports.findOneChangeStatus = (req, res) => {
   console.log("filter", filter);
   console.log("update", update);
 
-  Sms.updateOne(filter, update, {
-    upsert: false,
-    returnDocument: "after",
-  });
+  //Sms.updateOne(filter, update, {
+  //  upsert: false,
+  //  returnDocument: "after",
+  //});
   //doc.status = status;
   //await doc.save;
-  /*
-  await Sms.findOneAndUpdate(filter, update, {
+
+  Sms.findOneAndUpdate(filter, update, {
     returnOriginal: false,
   })
     .then((data) => {
@@ -91,7 +91,6 @@ exports.findOneChangeStatus = (req, res) => {
         .status(500)
         .send({ message: "Error retrieving Sms with phone=" + phone });
     });
-    */
 };
 
 exports.SendSmsTest = (req, res) => {
