@@ -99,7 +99,7 @@ exports.findOneChangeStatus = (req, res) => {
   //});
   //doc.status = status;
   //await doc.save;
-
+  /*
   Sms.findOneAndUpdate(filter, update, {
     returnOriginal: false,
   })
@@ -113,6 +113,7 @@ exports.findOneChangeStatus = (req, res) => {
         .status(500)
         .send({ message: "Error retrieving Sms with phone=" + phone });
     });
+  */
 };
 
 exports.SendSmsTest = (req, res) => {
