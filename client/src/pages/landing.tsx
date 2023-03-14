@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import {
   IonAlert,
-  IonBackButton,
+  IonApp,
   IonButton,
-  IonButtons,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
+  IonFooter,
   IonInput,
   IonItem,
   IonLabel,
@@ -85,116 +85,119 @@ function Landing() {
     router.push("/login", "forward", "push");
   };
   return (
-    <IonCard>
-      <IonCardHeader>
+    <IonApp>
+      <IonCard>
+        <IonCardHeader>
+          <img src={logo} alt="Ideal Food Market"></img>
+          <IonCardTitle class="ion-text-center">
+            Join Our Weekly Ad.
+          </IonCardTitle>
+          <IonCardSubtitle class="ion-text-center">
+            Shop and save with our weekly deals.
+          </IonCardSubtitle>
+        </IonCardHeader>
+
+        <IonCardContent>
+          <IonAlert
+            isOpen={showAlert}
+            onDidDismiss={() => setShowAlert(false)}
+            header={header}
+            subHeader={subHeader}
+            message={message}
+            buttons={["OK"]}
+          />
+          <IonList>
+            <IonItem fill="outline">
+              <IonLabel position="floating">
+                {" "}
+                <h1>Telephone Number </h1>
+              </IonLabel>
+              <IonInput
+                name="phone"
+                type="tel"
+                placeholder="888-888-8888"
+                value={client.phone}
+                onIonInput={(e) => handleInputChange(e)}
+              ></IonInput>
+            </IonItem>
+            <IonItem
+              fill="outline"
+              className={`${isValid && "ion-valid"} ${
+                isValid === false && "ion-invalid"
+              } ${isTouched && "ion-touched"}`}
+            >
+              <IonLabel position="floating">
+                <h1>Email input </h1>
+              </IonLabel>
+              <IonInput
+                name="email"
+                type="email"
+                placeholder="email@domain.com"
+                onIonInput={(event) => {
+                  validate(event);
+                  handleInputChange(event);
+                }}
+                onIonBlur={() => markTouched()}
+                value={client.email}
+              ></IonInput>
+
+              <IonNote slot="error">
+                <h1>Invalid email </h1>
+              </IonNote>
+            </IonItem>
+            <IonItem fill="outline">
+              <IonLabel position="floating">
+                <h1>First Name </h1>
+              </IonLabel>
+              <IonInput
+                name="fName"
+                value={client.fName}
+                onIonInput={(e) => handleInputChange(e)}
+              ></IonInput>
+            </IonItem>
+
+            <IonItem fill="outline">
+              <IonLabel position="floating">
+                <h1>Last Name </h1>
+              </IonLabel>
+              <IonInput
+                name="lName"
+                placeholder="Enter company name"
+                value={client.lName}
+                onIonInput={(e) => handleInputChange(e)}
+              ></IonInput>
+            </IonItem>
+            <IonItem fill="outline">
+              <IonLabel position="floating">
+                <h1>Zipcode </h1>
+              </IonLabel>
+              <IonInput
+                type="number"
+                name="zipCode"
+                placeholder="Zipcode"
+                value={client.ZipCode}
+                onIonInput={(e) => handleInputChange(e)}
+              ></IonInput>
+            </IonItem>
+            <IonButton
+              shape="round"
+              expand="block"
+              size="large"
+              onClick={() => handleSubmit()}
+            >
+              Join -- Unete
+            </IonButton>
+          </IonList>
+        </IonCardContent>
+      </IonCard>
+      <IonFooter>
         <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton />
-          </IonButtons>
           <IonTitle>
             <IonButton onClick={simpleNavigate}>LogIn</IonButton>
           </IonTitle>
         </IonToolbar>
-        <img src={logo} alt="Ideal Food Market"></img>
-        <IonCardTitle class="ion-text-center">Join Our Weekly Ad.</IonCardTitle>
-        <IonCardSubtitle class="ion-text-center">
-          Shop and save with our weekly deals.
-        </IonCardSubtitle>
-      </IonCardHeader>
-
-      <IonCardContent>
-        <IonAlert
-          isOpen={showAlert}
-          onDidDismiss={() => setShowAlert(false)}
-          header={header}
-          subHeader={subHeader}
-          message={message}
-          buttons={["OK"]}
-        />
-        <IonList>
-          <IonItem fill="outline">
-            <IonLabel position="floating">
-              {" "}
-              <h1>Telephone Number </h1>
-            </IonLabel>
-            <IonInput
-              name="phone"
-              type="tel"
-              placeholder="888-888-8888"
-              value={client.phone}
-              onIonInput={(e) => handleInputChange(e)}
-            ></IonInput>
-          </IonItem>
-          <IonItem
-            fill="outline"
-            className={`${isValid && "ion-valid"} ${
-              isValid === false && "ion-invalid"
-            } ${isTouched && "ion-touched"}`}
-          >
-            <IonLabel position="floating">
-              <h1>Email input </h1>
-            </IonLabel>
-            <IonInput
-              name="email"
-              type="email"
-              placeholder="email@domain.com"
-              onIonInput={(event) => {
-                validate(event);
-                handleInputChange(event);
-              }}
-              onIonBlur={() => markTouched()}
-              value={client.email}
-            ></IonInput>
-
-            <IonNote slot="error">
-              <h1>Invalid email </h1>
-            </IonNote>
-          </IonItem>
-          <IonItem fill="outline">
-            <IonLabel position="floating">
-              <h1>First Name </h1>
-            </IonLabel>
-            <IonInput
-              name="fName"
-              value={client.fName}
-              onIonInput={(e) => handleInputChange(e)}
-            ></IonInput>
-          </IonItem>
-
-          <IonItem fill="outline">
-            <IonLabel position="floating">
-              <h1>Last Name </h1>
-            </IonLabel>
-            <IonInput
-              name="lName"
-              placeholder="Enter company name"
-              value={client.lName}
-              onIonInput={(e) => handleInputChange(e)}
-            ></IonInput>
-          </IonItem>
-          <IonItem fill="outline">
-            <IonLabel position="floating">
-              <h1>Zipcode </h1>
-            </IonLabel>
-            <IonInput
-              type="number"
-              name="zipCode"
-              placeholder="Zipcode"
-              value={client.ZipCode}
-              onIonInput={(e) => handleInputChange(e)}
-            ></IonInput>
-          </IonItem>
-          <IonButton
-            shape="round"
-            expand="block"
-            size="large"
-            onClick={() => handleSubmit()}
-          >
-            Join -- Unete
-          </IonButton>
-        </IonList>
-      </IonCardContent>
-    </IonCard>
+      </IonFooter>
+    </IonApp>
   );
 }
 export default Landing;
