@@ -76,8 +76,9 @@ exports.findOneChangeStatus = async (req, res) => {
     .then((data) => {
       if (data) {
         const update = data[0];
-        console.log("update._id", update._id);
-        Sms.findByIdAndUpdate(update._id, update)
+        const id = update._id;
+        console.log("update._id", id);
+        Sms.findByIdAndUpdate(id, update)
           .then((data) => {})
           .catch((err) => {});
         res.send(update);
