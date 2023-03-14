@@ -9,8 +9,6 @@ import {
   IonButton,
   IonItem,
   IonAlert,
-  IonLabel,
-  IonTextarea,
   IonLoading,
 } from "@ionic/react";
 import { useState } from "react";
