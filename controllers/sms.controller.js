@@ -75,6 +75,10 @@ exports.findOneChangeStatus = async (req, res) => {
   await Sms.find(filter)
     .then((data) => {
       if (data) {
+        const update = data[0];
+        Sms.findByIdAndUpdate(update._id, update)
+          .then((data) => {})
+          .catch((err) => {});
         res.send(data[0]);
       } else {
         res.send("Error? data: " + data);
