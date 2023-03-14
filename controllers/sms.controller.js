@@ -71,28 +71,9 @@ exports.findOneChangeStatus = (req, res) => {
   console.log("filter", filter);
   console.log("update", update);
 
-  Sms.find({ phone: phone })
-    .then((data) => {
-      if (!data) {
-        res.status(404).send({ message: "Not found Sms with phone " + phone });
-      } else {
-        Sms.findByIdAndUpdate(data._id, update)
-          .then((data) => {
-            res.send(data);
-          })
-          .catch((err) => {
-            res
-              .status(500)
-              .send({ message: "Error retrieving Sms with phone=" + phone });
-          });
-      }
-    })
-    .catch((err) => {
-      res
-        .status(500)
-        .send({ message: "Error retrieving Sms with phone=" + phone });
-    });
+  let doc = Sms.find({ phone: phone });
 
+  console.log("doc", doc);
   //Sms.updateOne(filter, update, {
   //  upsert: false,
   //  returnDocument: "after",
