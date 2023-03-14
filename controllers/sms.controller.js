@@ -61,7 +61,7 @@ exports.findOne = (req, res) => {
       res.status(500).send({ message: "Error retrieving Sms with id=" + id });
     });
 };
-exports.findOneChangeStatus = async (req, res) => {
+exports.findOneChangeStatus = (req, res) => {
   const phone = req.params.phone;
   const status = req.params.status;
   const filter = { phone: phone };
@@ -71,7 +71,7 @@ exports.findOneChangeStatus = async (req, res) => {
   console.log("filter", filter);
   console.log("update", update);
 
-  const doc = await Sms.updateOne(filter, update, {
+  Sms.updateOne(filter, update, {
     upsert: false,
     returnDocument: "after",
   });
