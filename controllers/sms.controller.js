@@ -65,43 +65,13 @@ exports.findOneChangeStatus = async (req, res) => {
   const phone = req.params.phone;
   const status = req.params.status;
   const filter = { phone: phone };
-  const update = { status: status };
+  const update = { Status: status };
   console.log("phone", phone);
   console.log("status", status);
   console.log("filter", filter);
   console.log("update", update);
 
-  var smsMap = {};
-  await Sms.find(filter)
-    .then((data) => {
-      if (data) {
-        const update = data[0];
-        const id = update._id.toHexString();
-        console.log("update._id", id);
-        Sms.findOneAndUpdate({ _id: id }, { Status: status })
-          .then((doc) => {
-            console.log("results", doc);
-          })
-          .catch((errors) => {
-            console.log("errors", errors);
-          });
-        res.send(update);
-      } else {
-        res.send("Error? data: " + data);
-      }
-    })
-    .catch((err) => {
-      console.log("error:", err);
-    });
-
-  //Sms.updateOne(filter, update, {
-  //  upsert: false,
-  //  returnDocument: "after",
-  //});
-  //doc.status = status;
-  //await doc.save;
-  /*
-  Sms.findOneAndUpdate(filter, update, {
+  await Sms.findOneAndUpdate(filter, update, {
     returnOriginal: false,
   })
     .then((data) => {
@@ -114,7 +84,6 @@ exports.findOneChangeStatus = async (req, res) => {
         .status(500)
         .send({ message: "Error retrieving Sms with phone=" + phone });
     });
-  */
 };
 
 exports.SendSmsTest = (req, res) => {
