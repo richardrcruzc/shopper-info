@@ -80,7 +80,7 @@ exports.findOneChangeStatus = async (req, res) => {
         Sms.findByIdAndUpdate(update._id, update)
           .then((data) => {})
           .catch((err) => {});
-        res.send(data[0]);
+        res.send(update);
       } else {
         res.send("Error? data: " + data);
       }
