@@ -3,6 +3,16 @@ const Sms = require("../models/sms");
 
 const validateSmsInput = require("../validation/sms");
 
+exports.BulkSms = async (req, res) => {
+  const payload = req.body;
+  await Sms.insertMany(payload)
+    .then((data) => {
+      res.send({ payload: data });
+    })
+    .catch((err) => {
+      res.send({ err: err });
+    });
+};
 exports.ClearSms = async (req, res) => {
   await Sms.updateMany({ Status: "Submitted" }, { Status: "Pending" })
     .then((data) => {
@@ -129,11 +139,11 @@ exports.SendSmsTest = (req, res) => {
 };
 
 exports.SendSms = async (req, res) => {
+  const message = req.body.message;
   const apikey = require("../config/keys").apikey;
   const source = require("../config/keys").source;
-  const message = req.body.message;
-  var smsMap = [];
 
+  var smsMap = [];
   await Sms.find({ Status: "Pending" })
     .then((data) => {
       if (data) smsMap.push(data);
@@ -146,9 +156,7 @@ exports.SendSms = async (req, res) => {
     await axios
       .post("https://api.voicetel.com/v2.1/messaging/sms/", payload)
       .then((resp) => {
-        console.log("resp.data.statusCode", resp.data.statusCode);
         if (resp.data.statusCode === "200" && resp.data.status === "Success") {
-          console.log("resp.data.statusCode 1", resp.data.statusCode);
           Sms.findByIdAndUpdate(sms._id, { Status: "Submitted" })
             .then((data) => {})
             .catch((err) => {});
@@ -171,7 +179,6 @@ exports.SendSms = async (req, res) => {
 
     (async () => {
       await getJSONAsync(payload, sms);
-      console.log(">>>>>>>>>>> abc");
     })();
   });
   res.send("Sent");

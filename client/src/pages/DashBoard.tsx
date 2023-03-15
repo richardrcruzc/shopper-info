@@ -47,6 +47,10 @@ const DashBoard = () => {
           {" "}
           Clear SMS
         </IonButton>
+        <IonButton expand="block" onClick={() => handleClick("ImportFile")}>
+          {" "}
+          Import CSV File.
+        </IonButton>
         <IonButton expand="full" routerLink="/login">
           Log Out
         </IonButton>

@@ -62,6 +62,7 @@ const Login = () => {
     await axios
       .post("/users/login", userData)
       .then((res) => {
+        console.log("payload", res);
         const token = res.data.token;
         localStorage.setItem("jwtToken", token);
         // const decoded = jwt_decode(token);

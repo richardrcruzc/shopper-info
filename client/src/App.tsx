@@ -21,7 +21,6 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 import Landing from "./pages/landing";
-import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import DashBoard from "./pages/DashBoard";
 import useAuth from "./hooks/auth";
@@ -30,6 +29,7 @@ import { FindByNumber } from "./pages/FindByNumber";
 import { TestSms } from "./pages/TestSms";
 import { SendSms } from "./pages/SendSms";
 import { ClearSms } from "./pages/ClearSms";
+import { FileImportCsv } from "./pages/FileImportCsv";
 
 setupIonicReact();
 
@@ -42,7 +42,6 @@ const App = () => {
           <Route path="/landing" component={Landing} exact={true} />
           <Redirect exact from="/" to="/landing" />
           <Route path="/Login" component={Login} exact={true} />
-
           <Route
             path="/DashBoard"
             render={() =>
@@ -82,6 +81,13 @@ const App = () => {
             path="/ClearSms"
             render={() =>
               isLoggedIn ? <ClearSms /> : <Redirect to="/landing" />
+            }
+            exact={true}
+          />
+          <Route
+            path="/FileImportCsv"
+            render={() =>
+              isLoggedIn ? <FileImportCsv /> : <Redirect to="/landing" />
             }
             exact={true}
           />
