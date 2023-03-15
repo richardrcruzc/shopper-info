@@ -17,8 +17,7 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 import { useRecoilState } from "recoil";
 import { authState } from "../../state";
-import axios from "../../utils/axios";
-
+import instance from "../../utils/axios";
 function validateEmail(email: string) {
   const re =
     // eslint-disable-next-line no-control-regex
@@ -59,7 +58,7 @@ const Login = () => {
       password: password,
     };
 
-    await axios
+    await instance
       .post("/users/login", userData)
       .then((res) => {
         console.log("payload", res);
@@ -72,7 +71,7 @@ const Login = () => {
         history.push("/dashboard");
       })
       .catch((err) => {
-        console.log("err.response.data", err.response.data);
+        console.log("err.response.data", err);
         setMessage("Authentication Info Incorrect");
         setIserror(true);
       });
