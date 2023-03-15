@@ -4,13 +4,16 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import { RecoilRoot } from "recoil";
+import { AxiosInterceptor } from "./utils/axios";
 
 const container = document.getElementById("root");
 const root = createRoot(container!);
 root.render(
   <React.StrictMode>
     <RecoilRoot>
-      <App />
+      <AxiosInterceptor>
+        <App />
+      </AxiosInterceptor>
     </RecoilRoot>
   </React.StrictMode>
 );

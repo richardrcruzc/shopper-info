@@ -20,11 +20,13 @@ const AxiosInterceptor = ({ children }) => {
   useEffect(() => {
     instance.interceptors.request.use(
       async (config, request) => {
+        console.log("Auth", auth);
         const token = auth;
         if (token && config.url !== "/users/login") {
           config.headers = {
             authorization: token,
           };
+          console.log("authorization", auth);
         }
         return config;
       },

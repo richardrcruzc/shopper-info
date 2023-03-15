@@ -29,7 +29,7 @@ export type initialState = {
   ZipCode: string;
   Status: string;
 };
-export const FindByNumber: React.FC = () => {
+export const FindByNumber = () => {
   const [loadingText, setLoadingText] = useState<string | undefined>();
   const [smsPhone, setSmsPhone] = useState<initialState>();
 
