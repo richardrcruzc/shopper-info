@@ -41,7 +41,6 @@ const App = () => {
         <IonRouterOutlet>
           <Route path="/landing" component={Landing} exact={true} />
           <Redirect exact from="/" to="/landing" />
-          <Route path="/Register" component={Register} />
           <Route path="/Login" component={Login} exact={true} />
 
           <Route
