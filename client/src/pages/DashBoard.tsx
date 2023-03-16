@@ -47,7 +47,7 @@ const DashBoard = () => {
           {" "}
           Clear SMS
         </IonButton>
-        <IonButton expand="block" onClick={() => handleClick("ImportFile")}>
+        <IonButton expand="block" onClick={() => handleClick("LoadDataString")}>
           {" "}
           Import CSV File.
         </IonButton>

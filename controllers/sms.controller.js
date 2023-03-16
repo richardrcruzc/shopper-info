@@ -5,6 +5,7 @@ const validateSmsInput = require("../validation/sms");
 
 exports.BulkSms = async (req, res) => {
   const payload = req.body;
+  if (payload === undefined) res.send({ noPayload: payload });
   await Sms.insertMany(payload)
     .then((data) => {
       res.send({ payload: data });

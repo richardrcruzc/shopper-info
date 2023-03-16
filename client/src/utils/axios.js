@@ -8,8 +8,8 @@ import useAuth from "../hooks/auth";
 const instance = axios.create({
   // eslint-disable-next-line no-undef
   //baseURL: process.env.REACT_APP_API_URL
-  //baseURL: "http://10.0.0.212:5000/api/",
-  baseURL: "http://23.254.134.220:5000/api/",
+  baseURL: "http://10.0.0.212:5000/api/",
+  //baseURL: "http://23.254.134.220:5000/api/",
 });
 
 const AxiosInterceptor = ({ children }) => {
@@ -20,13 +20,11 @@ const AxiosInterceptor = ({ children }) => {
   useEffect(() => {
     instance.interceptors.request.use(
       async (config, request) => {
-        console.log("Auth", auth);
         const token = auth;
         if (token && config.url !== "/users/login") {
           config.headers = {
             authorization: token,
           };
-          console.log("authorization", auth);
         }
         return config;
       },

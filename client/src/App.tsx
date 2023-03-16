@@ -29,7 +29,7 @@ import { FindByNumber } from "./pages/FindByNumber";
 import { TestSms } from "./pages/TestSms";
 import { SendSms } from "./pages/SendSms";
 import { ClearSms } from "./pages/ClearSms";
-import { FileImportCsv } from "./pages/FileImportCsv";
+import LoadDataString from "./pages/LoadDataString";
 
 setupIonicReact();
 
@@ -85,9 +85,9 @@ const App = () => {
             exact={true}
           />
           <Route
-            path="/FileImportCsv"
+            path="/LoadDataString"
             render={() =>
-              isLoggedIn ? <FileImportCsv /> : <Redirect to="/landing" />
+              isLoggedIn ? <LoadDataString /> : <Redirect to="/landing" />
             }
             exact={true}
           />

@@ -31,6 +31,11 @@ async function ClearSms() {
   const client = await axios.post("/sms/ClearSms");
   return client.data;
 }
+async function ImportSms(payload: any) {
+  const client = await axios.post("/sms/BulkSms", JSON.parse(payload));
+  console.log("client.data", client.data);
+  return client.data;
+}
 const AxiosActions = {
   Register,
   ListAll,
@@ -39,6 +44,7 @@ const AxiosActions = {
   SendSmsTest,
   SendSms,
   ClearSms,
+  ImportSms,
 };
 
 export default AxiosActions;
