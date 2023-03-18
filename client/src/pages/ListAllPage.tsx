@@ -18,10 +18,12 @@ import AxiosActions from "../service/AxiosCalls";
 export type initialState = {
   _id: string;
   phone: string;
-  email: string;
   fName: string;
   lName: string;
+  Address: string;
+  City: string;
   ZipCode: string;
+  Status: string;
 };
 export const ListAllPage: React.FC = () => {
   const [listSms, setListSms] = useState<initialState[]>([]);
@@ -56,6 +58,12 @@ export const ListAllPage: React.FC = () => {
           </IonButtons>
           <IonTitle size="large">List All SMS</IonTitle>
         </IonToolbar>
+        <div>
+          <small>
+            You are running this application in <b>{process.env.NODE_ENV}</b>{" "}
+            mode.
+          </small>
+        </div>
       </IonHeader>
       <IonContent>
         <IonButton onClick={handLoad}>Action</IonButton>
@@ -69,7 +77,10 @@ export const ListAllPage: React.FC = () => {
               Name
             </IonCol>
             <IonCol size="12" size-sm="2">
-              Email
+              Address
+            </IonCol>
+            <IonCol size="12" size-sm="2">
+              City
             </IonCol>
             <IonCol size="12" size-sm="2">
               ZipCode
@@ -88,7 +99,10 @@ export const ListAllPage: React.FC = () => {
                   {sms.fName} {sms.lName}
                 </IonCol>
                 <IonCol size="12" size-sm="2">
-                  {sms.email}
+                  {sms.Address}
+                </IonCol>
+                <IonCol size="12" size-sm="2">
+                  {sms.City}
                 </IonCol>
                 <IonCol size="12" size-sm="2">
                   {sms.ZipCode}

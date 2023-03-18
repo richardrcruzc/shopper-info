@@ -5,6 +5,13 @@ const config: CapacitorConfig = {
   appName: "shopper-info",
   webDir: "build",
   bundledWebRuntime: false,
+  server:
+    process.env.NODE_ENV === "development"
+      ? {
+          url: "http://localhost:8100",
+          cleartext: true,
+        }
+      : {},
 };
 
 export default config;

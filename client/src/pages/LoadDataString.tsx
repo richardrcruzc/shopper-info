@@ -16,9 +16,10 @@ import "./LoadDataString.css";
 class Sms {
   constructor(
     public phone: string,
-    public email: string,
     public fName: string,
     public lName: string,
+    public Adress: string,
+    public City: string,
     public ZipCode: string,
     public Status: string,
     public results: string
@@ -46,7 +47,8 @@ const LoadDataString = () => {
         arrayData[3] ?? "",
         arrayData[4] ?? "",
         arrayData[5] ?? "",
-        arrayData[6] ?? ""
+        arrayData[6] ?? "",
+        arrayData[7] ?? ""
       );
 
       arrayResult.push(list);
@@ -74,6 +76,10 @@ const LoadDataString = () => {
       </IonHeader>
       <IonContent fullscreen>
         <div className="container">
+          <div>
+            <h1>Please use this format to import Info</h1>
+            <h3>phone|First Name|Last Name|Adress|City|ZipCode</h3>
+          </div>
           <IonButton onClick={(event) => handleChangeStatus()}>
             Import Info...
           </IonButton>

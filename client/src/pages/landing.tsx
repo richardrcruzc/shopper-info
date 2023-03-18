@@ -170,7 +170,7 @@ function Landing() {
                     </IonLabel>
                     <IonInput
                       type="number"
-                      name="zipCode"
+                      name="ZipCode"
                       placeholder="Zipcode"
                       value={client.ZipCode}
                       onIonInput={(e) => handleInputChange(e)}

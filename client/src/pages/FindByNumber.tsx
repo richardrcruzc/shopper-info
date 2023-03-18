@@ -23,9 +23,10 @@ import "./FindByNumber.css";
 export type initialState = {
   _id: string;
   phone: string;
-  email: string;
   fName: string;
   lName: string;
+  Address: string;
+  City: string;
   ZipCode: string;
   Status: string;
 };
@@ -87,7 +88,8 @@ export const FindByNumber = () => {
               <IonCardSubtitle>
                 Name: {smsPhone?.fName} {smsPhone?.fName}
               </IonCardSubtitle>
-              <IonCardSubtitle>Email: {smsPhone?.email}</IonCardSubtitle>
+              <IonCardSubtitle>Address: {smsPhone?.Address}</IonCardSubtitle>
+              <IonCardSubtitle>City: {smsPhone?.City}</IonCardSubtitle>
               <IonCardSubtitle>ZipCode: {smsPhone?.ZipCode}</IonCardSubtitle>
               <IonCardSubtitle>Status: {smsPhone?.Status}</IonCardSubtitle>
             </IonCardContent>
