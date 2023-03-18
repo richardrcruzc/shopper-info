@@ -36,9 +36,10 @@ exports.CreateClient = (req, res) => {
 
   const sms = new Sms({
     phone: req.body.phone,
-    email: req.body.email,
     fName: req.body.fName,
     lName: req.body.lName,
+    Address: req.body.Address,
+    City: req.body.City,
     ZipCode: req.body.ZipCode,
     Status: "Pending",
     results: "",

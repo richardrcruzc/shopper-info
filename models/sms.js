@@ -3,9 +3,10 @@ const Schema = mongoose.Schema;
 
 const SmsSchema = new Schema({
   phone: String,
-  email: String,
   fName: String,
   lName: String,
+  Address: String,
+  City: String,
   ZipCode: String,
   Status: String, //"Pending" | "Submitted" | "Canceled",
   results: String,
