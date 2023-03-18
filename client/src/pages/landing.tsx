@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   IonAlert,
   IonApp,
@@ -15,7 +15,6 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonNote,
   IonRow,
   IonTitle,
   IonToolbar,
@@ -35,9 +34,6 @@ const initialState = {
 
 function Landing() {
   const [client, setClient] = useState(initialState);
-  const [isTouched, setIsTouched] = useState(false);
-  const [isValid, setIsValid] = useState<boolean>();
-  //const ionInputEl = useRef<HTMLIonInputElement>(null);
   const [showAlert, setShowAlert] = useState(false);
   const [header, setHeader] = useState("Alert");
   const [subHeader, setSubHeader] = useState(
@@ -64,24 +60,6 @@ function Landing() {
     setClient({ ...client, [name]: value });
   };
 
-  const validateEmail = (email: string) => {
-    return email.match(
-      /^(?=.{1,254}$)(?=.{1,64}@)[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-    );
-  };
-  const validate = (ev: Event) => {
-    const value = (ev.target as HTMLInputElement).value;
-
-    setIsValid(undefined);
-
-    if (value === "") return;
-
-    validateEmail(value) !== null ? setIsValid(true) : setIsValid(false);
-  };
-
-  const markTouched = () => {
-    setIsTouched(true);
-  };
   //	Initializing our router
   const router = useIonRouter();
   //	A simple, hard-coded navigation
@@ -165,7 +143,7 @@ function Landing() {
                       <h1>Address </h1>
                     </IonLabel>
                     <IonInput
-                      name="fName"
+                      name="Address"
                       value={client.Address}
                       onIonInput={(e) => handleInputChange(e)}
                     ></IonInput>
@@ -179,7 +157,7 @@ function Landing() {
                       <h1>City </h1>
                     </IonLabel>
                     <IonInput
-                      name="fName"
+                      name="City"
                       value={client.City}
                       onIonInput={(e) => handleInputChange(e)}
                     ></IonInput>
