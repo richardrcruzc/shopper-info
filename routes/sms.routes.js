@@ -14,5 +14,6 @@ smsRouter.post("/SendSms", sms.SendSms);
 smsRouter.post("/ClearSms", sms.ClearSms);
 
 smsRouter.post("/BulkSms", sms.BulkSms);
+smsRouter.post("/updateStatus", sms.UpdateStatus);
 
 module.exports = smsRouter;

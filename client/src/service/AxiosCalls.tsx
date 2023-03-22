@@ -12,6 +12,7 @@ async function ListAll() {
 }
 async function ByPhone(phone: any) {
   const client = await axios.get(`/sms/phone/${phone}`);
+  console.log("client.data", client.data);
   return client.data;
 }
 

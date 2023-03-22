@@ -23,7 +23,9 @@ class Sms {
     public ZipCode: string,
     public Status: string,
     public results: string
-  ) {}
+  ) {
+    Status = "";
+  }
 }
 const LoadDataString = () => {
   const [isDisabled, setIsDisable] = useState(false);
