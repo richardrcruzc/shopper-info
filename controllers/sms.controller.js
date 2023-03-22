@@ -14,6 +14,20 @@ exports.BulkSms = async (req, res) => {
       res.send({ err: err });
     });
 };
+
+exports.UpdateStatus = async (req, res) => {
+  await Sms.updateMany({ Status: "" }, { Status: "Pending" })
+    .then((data) => {
+      F;
+      res.send("Data Clear");
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the ClearSms.",
+      });
+    });
+};
 exports.ClearSms = async (req, res) => {
   await Sms.updateMany({ Status: "Submitted" }, { Status: "Pending" })
     .then((data) => {
