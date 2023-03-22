@@ -26,11 +26,13 @@ class Sms {
   ) {}
 }
 const LoadDataString = () => {
+  const [isDisabled, setIsDisable] = useState(false);
   const [importData, setImportData] = useState("");
   const [loadingText, setLoadingText] = useState<string | undefined>();
 
   const handleChangeStatus = async () => {
     if (importData === "") return;
+    setIsDisable(true);
     setLoadingText("ChangeStatus...");
 
     const arrayLines = importData.split("\n");
@@ -80,7 +82,10 @@ const LoadDataString = () => {
             <h1>Please use this format to import Info</h1>
             <h3>phone|First Name|Last Name|Adress|City|ZipCode</h3>
           </div>
-          <IonButton onClick={(event) => handleChangeStatus()}>
+          <IonButton
+            onClick={(event) => handleChangeStatus()}
+            disabled={isDisabled}
+          >
             Import Info...
           </IonButton>
           <IonTextarea
@@ -92,6 +97,12 @@ const LoadDataString = () => {
             placeholder="Paste info to Import here !"
             onIonInput={(e: any) => setImportData(e.target.value)}
           ></IonTextarea>
+          <IonButton
+            onClick={(event) => handleChangeStatus()}
+            disabled={isDisabled}
+          >
+            Import Info...
+          </IonButton>
         </div>
       </IonContent>
     </IonPage>

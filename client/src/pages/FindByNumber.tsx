@@ -86,7 +86,7 @@ export const FindByNumber = () => {
             </IonCardHeader>
             <IonCardContent>
               <IonCardSubtitle>
-                Name: {smsPhone?.fName} {smsPhone?.fName}
+                Name: {smsPhone?.fName} {smsPhone?.lName}
               </IonCardSubtitle>
               <IonCardSubtitle>Address: {smsPhone?.Address}</IonCardSubtitle>
               <IonCardSubtitle>City: {smsPhone?.City}</IonCardSubtitle>

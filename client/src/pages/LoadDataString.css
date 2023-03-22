@@ -22,3 +22,13 @@
 .container a {
   text-decoration: none;
 }
+.text-input {
+  height: auto;
+  div.input-wrapper {
+    background-color: #fff;
+    border-radius: 20px;
+    textarea.text-input {
+      margin-left: 8px;
+    }
+  }
+}
