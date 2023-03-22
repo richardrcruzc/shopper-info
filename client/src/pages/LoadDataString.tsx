@@ -21,11 +21,9 @@ class Sms {
     public Adress: string,
     public City: string,
     public ZipCode: string,
-    public Status: string,
+    public Status: string = "Pending",
     public results: string
-  ) {
-    Status = "Pending";
-  }
+  ) {}
 }
 const LoadDataString = () => {
   const [isDisabled, setIsDisable] = useState(false);
