@@ -24,7 +24,7 @@ class Sms {
     public Status: string,
     public results: string
   ) {
-    Status = "";
+    Status = "Pending";
   }
 }
 const LoadDataString = () => {
