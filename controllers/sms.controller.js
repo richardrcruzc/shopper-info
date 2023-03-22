@@ -176,6 +176,13 @@ exports.SendSms = async (req, res) => {
           Sms.findByIdAndUpdate(sms._id, { Status: "Submitted" })
             .then((data) => {})
             .catch((err) => {});
+        } else {
+          Sms.findByIdAndUpdate(sms._id, {
+            Status: "Submitted",
+            results: resp.data.status,
+          })
+            .then((data) => {})
+            .catch((err) => {});
         }
       })
       .catch((err) => {
