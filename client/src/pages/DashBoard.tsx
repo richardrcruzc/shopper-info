@@ -14,10 +14,7 @@ import "./DashBoard.css";
 const DashBoard = () => {
   //	Initializing our router
   const router = useIonRouter();
-
   const handleClick = async (link: any) => {
-    //	A simple, hard-coded navigation
-
     router.push(link, "forward", "push");
   };
   return (
