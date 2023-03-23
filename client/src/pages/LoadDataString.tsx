@@ -40,7 +40,7 @@ const LoadDataString = () => {
     let arrayResult: Sms[] = [];
 
     arrayLines.forEach((line) => {
-      const arrayData = line.split("|");
+      const arrayData = line.split(",");
 
       let list = new Sms(
         arrayData[0] ?? "",
