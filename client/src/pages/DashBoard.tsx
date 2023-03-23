@@ -55,10 +55,10 @@ const DashBoard = () => {
         <IonButton expand="full" routerLink="/login">
           Log Out
         </IonButton>
-        <IonButton expand="full" onClick={() => handleClick("AboutUs")}>
+        <IonButton expand="full" onClick={() => handleClick("Tab1")}>
           About Us
         </IonButton>
-        <IonButton expand="full" onClick={() => handleClick("Help")}>
+        <IonButton expand="full" onClick={() => handleClick("Tab1")}>
           Help
         </IonButton>
       </IonContent>

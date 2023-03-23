@@ -30,6 +30,8 @@ import { TestSms } from "./pages/TestSms";
 import { SendSms } from "./pages/SendSms";
 import { ClearSms } from "./pages/ClearSms";
 import LoadDataString from "./pages/LoadDataString";
+import Tab1 from "./pages/Tab1";
+import Tab2 from "./pages/Tab2";
 
 setupIonicReact();
 
@@ -89,6 +91,16 @@ const App = () => {
             render={() =>
               isLoggedIn ? <LoadDataString /> : <Redirect to="/landing" />
             }
+            exact={true}
+          />
+          <Route
+            path="/Tab1"
+            render={() => (isLoggedIn ? <Tab1 /> : <Redirect to="/Tab1" />)}
+            exact={true}
+          />
+          <Route
+            path="/Tab2"
+            render={() => (isLoggedIn ? <Tab2 /> : <Redirect to="/Tab2" />)}
             exact={true}
           />
         </IonRouterOutlet>

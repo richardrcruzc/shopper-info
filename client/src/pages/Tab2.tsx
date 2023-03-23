@@ -13,16 +13,16 @@ const Tab2 = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 2222222</IonTitle>
+          <IonTitle>Help</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Tab 22222</IonTitle>
+            <IonTitle size="large">Help</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 2 page" />
+        <ExploreContainer name="Help" />
       </IonContent>
     </IonPage>
   );
