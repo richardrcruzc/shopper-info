@@ -72,10 +72,10 @@ export const SendSms: React.FC = () => {
       </IonHeader>
       <IonContent>
         <IonItem>
-          <IonTitle size="large">
+          <div className="ion-padding">
             Enter The Message To Be Send To all the Customer That Have Been
             Register In Then App.
-          </IonTitle>
+          </div>
         </IonItem>
         <IonItem fill="outline">
           <IonLabel position="floating">

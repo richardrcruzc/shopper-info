@@ -77,11 +77,11 @@ export const TestSms: React.FC = () => {
       />
       <IonLoading isOpen={!!loadingText} message={loadingText} />
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="primary">
           <IonButtons slot="start">
             <IonBackButton defaultHref="/dashboard" />
           </IonButtons>
-          <IonTitle size="large">Test SMS</IonTitle>
+          <IonTitle>Test Send SMS</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>

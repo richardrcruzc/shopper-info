@@ -60,10 +60,10 @@ export const ClearSms: React.FC = () => {
       </IonHeader>
       <IonContent>
         <IonItem>
-          <IonTitle size="large">
+          <div className="ion-padding">
             This Option Will Clear the Past SMS Send Proces, In Order To Allow
             You To Send New Batch Again.
-          </IonTitle>
+          </div>
         </IonItem>
 
         <IonItem>

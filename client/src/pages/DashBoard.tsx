@@ -5,16 +5,20 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  useIonRouter,
 } from "@ionic/react";
-import { useHistory } from "react-router";
+//import { useHistory } from "react-router";
 
 import "./DashBoard.css";
 
 const DashBoard = () => {
-  const { replace } = useHistory();
+  //	Initializing our router
+  const router = useIonRouter();
 
   const handleClick = async (link: any) => {
-    replace(link);
+    //	A simple, hard-coded navigation
+
+    router.push(link, "forward", "push");
   };
   return (
     <IonPage>
